@@ -25,6 +25,7 @@ exports[`it should close on click outside popup (closeOnDocumentClick = true ) 1
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom center"
     trigger={
       <button>
@@ -128,6 +129,7 @@ exports[`it should close on click outside popup (closeOnDocumentClick = true ) 2
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom center"
     trigger={
       <button>
@@ -171,6 +173,7 @@ exports[`it should render correctly  1`] = `
   onOpen={[Function]}
   open={false}
   overlayStyle={Object {}}
+  popupRootID="popupRoot"
   position="bottom center"
   trigger={
     <button>
@@ -208,6 +211,7 @@ exports[`it should render correctly on click and will update the the popup conte
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom center"
     trigger={
       <button>
@@ -316,6 +320,7 @@ exports[`it should render correctly on click and will update the the popup conte
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom center"
     trigger={
       <button>
@@ -364,6 +369,7 @@ exports[`it should render correctly on click and will update the trigger text   
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom center"
     trigger={[Function]}
   >
@@ -465,6 +471,7 @@ exports[`it should render correctly on click and will update the trigger text   
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom center"
     trigger={[Function]}
   >
@@ -509,6 +516,7 @@ exports[`it should rendered in the bottom center position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom center"
     trigger={
       <button>
@@ -612,6 +620,7 @@ exports[`it should rendered in the bottom left position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom left"
     trigger={
       <button>
@@ -715,6 +724,7 @@ exports[`it should rendered in the bottom right position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom right"
     trigger={
       <button>
@@ -818,6 +828,7 @@ exports[`it should rendered in the left bottom position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="left bottom"
     trigger={
       <button>
@@ -921,6 +932,7 @@ exports[`it should rendered in the left center position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="left center"
     trigger={
       <button>
@@ -1024,6 +1036,7 @@ exports[`it should rendered in the left top position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="left top"
     trigger={
       <button>
@@ -1127,6 +1140,7 @@ exports[`it should rendered in the right bottom position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="right bottom"
     trigger={
       <button>
@@ -1230,6 +1244,7 @@ exports[`it should rendered in the right center position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="right center"
     trigger={
       <button>
@@ -1333,6 +1348,7 @@ exports[`it should rendered in the right top position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="right top"
     trigger={
       <button>
@@ -1436,6 +1452,7 @@ exports[`it should rendered in the top center position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="top center"
     trigger={
       <button>
@@ -1539,6 +1556,7 @@ exports[`it should rendered in the top left position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="top left"
     trigger={
       <button>
@@ -1642,6 +1660,7 @@ exports[`it should rendered in the top right position   1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="top right"
     trigger={
       <button>
@@ -1744,6 +1763,7 @@ exports[`it shouldn't close on click outside popup  1`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom center"
     trigger={
       <button>
@@ -1846,6 +1866,7 @@ exports[`it shouldn't close on click outside popup  2`] = `
     onOpen={[Function]}
     open={false}
     overlayStyle={Object {}}
+    popupRootID="popupRoot"
     position="bottom center"
     trigger={
       <button>
