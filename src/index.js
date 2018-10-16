@@ -1,5 +1,5 @@
 import React from "react";
-import { findDOMNode } from "react-dom";
+import ReactDOM, { findDOMNode } from "react-dom";
 import calculatePosition from "./Utils";
 
 import styles from "./index.css.js";
@@ -41,7 +41,8 @@ export default class Popup extends React.PureComponent {
     offsetY: 0,
     mouseEnterDelay: 100,
     mouseLeaveDelay: 100,
-    keepTooltipInside: false
+    keepTooltipInside: false,
+    popupRootID: "popupRoot"
   };
   state = {
     isOpen: this.props.open || this.props.defaultOpen,
@@ -138,7 +139,14 @@ export default class Popup extends React.PureComponent {
   };
 
   setPosition = () => {
-    const { arrow, position, offsetX, offsetY, keepTooltipInside, arrowStyle } = this.props;
+    const {
+      arrow,
+      position,
+      offsetX,
+      offsetY,
+      keepTooltipInside,
+      arrowStyle
+    } = this.props;
     const { modal } = this.state;
     if (modal) return;
     const helper = this.HelperEl.getBoundingClientRect();
@@ -252,12 +260,8 @@ export default class Popup extends React.PureComponent {
     const { modal } = this.state;
     const overlay = this.state.isOpen && !(on.indexOf("hover") >= 0);
     const ovStyle = modal ? styles.overlay.modal : styles.overlay.tooltip;
-    return [
-      !!this.props.trigger && (
-        <Ref innerRef={this.setTriggerRef} key="R">
-          {this.renderTrigger()}
-        </Ref>
-      ),
+
+    const portalContent = [
       this.state.isOpen && (
         <div
           key="H"
@@ -275,7 +279,26 @@ export default class Popup extends React.PureComponent {
           {modal && this.renderContent()}
         </div>
       ),
-      this.state.isOpen && !modal && this.renderContent(),
+      this.state.isOpen && !modal && this.renderContent()
+    ];
+
+    const portalRoot = document.getElementById(this.props.popupRootID);
+    const portal = portalRoot
+      ? [
+          ReactDOM.createPortal(
+            portalContent,
+            document.getElementById(this.props.popupRootID)
+          )
+        ]
+      : portalContent;
+
+    return [
+      !!this.props.trigger && (
+        <Ref innerRef={this.setTriggerRef} key="R">
+          {this.renderTrigger()}
+        </Ref>
+      ),
+      ...portal
     ];
   }
 }
