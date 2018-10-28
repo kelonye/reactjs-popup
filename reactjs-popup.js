@@ -6,10 +6,11 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react'), require('react-dom')) :
   typeof define === 'function' && define.amd ? define(['react', 'react-dom'], factory) :
-  (global.reactjsPopup = factory(global.React,global.reactDom));
-}(this, (function (React,reactDom) { 'use strict';
+  (global.reactjsPopup = factory(global.React,global.ReactDOM));
+}(this, (function (React,ReactDOM) { 'use strict';
 
   React = React && React.hasOwnProperty('default') ? React['default'] : React;
+  var ReactDOM__default = 'default' in ReactDOM ? ReactDOM['default'] : ReactDOM;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -71,16 +72,20 @@
       throw new TypeError("Super expression must either be null or a function");
     }
 
-    _setPrototypeOf(subClass.prototype, superClass && superClass.prototype);
-
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+      constructor: {
+        value: subClass,
+        writable: true,
+        configurable: true
+      }
+    });
     if (superClass) _setPrototypeOf(subClass, superClass);
   }
 
   function _getPrototypeOf(o) {
-    _getPrototypeOf = Object.getPrototypeOf || function _getPrototypeOf(o) {
-      return o.__proto__;
+    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+      return o.__proto__ || Object.getPrototypeOf(o);
     };
-
     return _getPrototypeOf(o);
   }
 
@@ -308,6 +313,8 @@
   var Popup =
   /*#__PURE__*/
   function (_React$PureComponent) {
+    _inherits(Popup, _React$PureComponent);
+
     function Popup(props) {
       var _this;
 
@@ -315,17 +322,25 @@
 
       _this = _possibleConstructorReturn(this, _getPrototypeOf(Popup).call(this, props));
 
-      _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
         isOpen: _this.props.open || _this.props.defaultOpen,
         modal: _this.props.modal ? true : !_this.props.trigger // we create this modal state because the popup can't be a tooltip if the trigger prop doesn't exist
 
-      }), "lockScroll", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "lockScroll", function () {
         if (_this.state.modal && _this.props.lockScroll) document.getElementsByTagName("body")[0].style.overflow = "hidden";
-      }), "resetScroll", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "resetScroll", function () {
         if (_this.state.modal && _this.props.lockScroll) document.getElementsByTagName("body")[0].style.overflow = "auto";
-      }), "togglePopup", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "togglePopup", function () {
         if (_this.state.isOpen) _this.closePopup();else _this.openPopup();
-      }), "openPopup", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openPopup", function () {
         if (_this.state.isOpen) return;
 
         _this.setState({
@@ -337,7 +352,9 @@
 
           _this.lockScroll();
         });
-      }), "closePopup", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closePopup", function () {
         if (!_this.state.isOpen) return;
 
         _this.props.onClose();
@@ -347,19 +364,25 @@
         }, function () {
           _this.resetScroll();
         });
-      }), "onMouseEnter", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onMouseEnter", function () {
         clearTimeout(_this.timeOut);
         var mouseEnterDelay = _this.props.mouseEnterDelay;
         _this.timeOut = setTimeout(function () {
           return _this.openPopup();
         }, mouseEnterDelay);
-      }), "onMouseLeave", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onMouseLeave", function () {
         clearTimeout(_this.timeOut);
         var mouseLeaveDelay = _this.props.mouseLeaveDelay;
         _this.timeOut = setTimeout(function () {
           return _this.closePopup();
         }, mouseLeaveDelay);
-      }), "getTooltipBoundary", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getTooltipBoundary", function () {
         var keepTooltipInside = _this.props.keepTooltipInside;
         var boundingBox = {
           top: 0,
@@ -379,7 +402,9 @@
         }
 
         return boundingBox;
-      }), "setPosition", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setPosition", function () {
         var _this$props = _this.props,
             arrow = _this$props.arrow,
             position = _this$props.position,
@@ -417,7 +442,9 @@
         }
 
         if (window.getComputedStyle(_this.TriggerEl, null).getPropertyValue("position") == "static" || window.getComputedStyle(_this.TriggerEl, null).getPropertyValue("position") == "") _this.TriggerEl.style.position = "relative";
-      }), "addWarperAction", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "addWarperAction", function () {
         var _this$props2 = _this.props,
             contentStyle = _this$props2.contentStyle,
             className = _this$props2.className,
@@ -439,7 +466,9 @@
         }
 
         return childrenElementProps;
-      }), "renderTrigger", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "renderTrigger", function () {
         var triggerProps = {
           key: "T"
         };
@@ -467,7 +496,9 @@
 
         if (typeof trigger === "function") return React.cloneElement(trigger(_this.state.isOpen), triggerProps);
         return React.cloneElement(trigger, triggerProps);
-      }), "renderContent", function () {
+      });
+
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "renderContent", function () {
         var _this$props4 = _this.props,
             arrow = _this$props4.arrow,
             arrowStyle = _this$props4.arrowStyle;
@@ -538,10 +569,7 @@
         var modal = this.state.modal;
         var overlay = this.state.isOpen && !(on.indexOf("hover") >= 0);
         var ovStyle = modal ? styles.overlay.modal : styles.overlay.tooltip;
-        return [!!this.props.trigger && React.createElement(Ref, {
-          innerRef: this.setTriggerRef,
-          key: "R"
-        }, this.renderTrigger()), this.state.isOpen && React.createElement("div", {
+        var portalContent = [this.state.isOpen && React.createElement("div", {
           key: "H",
           style: {
             position: "absolute",
@@ -555,10 +583,14 @@
           style: Object.assign({}, ovStyle, overlayStyle),
           onClick: closeOnDocumentClick ? this.closePopup : undefined
         }, modal && this.renderContent()), this.state.isOpen && !modal && this.renderContent()];
+        var portalRoot = document.getElementById(this.props.popupRootID);
+        var portal = portalRoot ? [ReactDOM__default.createPortal(portalContent, document.getElementById(this.props.popupRootID))] : portalContent;
+        return [!!this.props.trigger && React.createElement(Ref, {
+          innerRef: this.setTriggerRef,
+          key: "R"
+        }, this.renderTrigger())].concat(portal);
       }
     }]);
-
-    _inherits(Popup, _React$PureComponent);
 
     return Popup;
   }(React.PureComponent);
@@ -587,7 +619,8 @@
     offsetY: 0,
     mouseEnterDelay: 100,
     mouseLeaveDelay: 100,
-    keepTooltipInside: false
+    keepTooltipInside: false,
+    popupRootID: "popupRoot"
   });
 
   {
@@ -622,6 +655,8 @@
   var Ref =
   /*#__PURE__*/
   function (_React$PureComponent2) {
+    _inherits(Ref, _React$PureComponent2);
+
     function Ref(props) {
       _classCallCheck(this, Ref);
 
@@ -632,7 +667,7 @@
       key: "componentDidMount",
       value: function componentDidMount() {
         var innerRef = this.props.innerRef;
-        if (innerRef) innerRef(reactDom.findDOMNode(this));
+        if (innerRef) innerRef(ReactDOM.findDOMNode(this));
       }
     }, {
       key: "render",
@@ -641,8 +676,6 @@
         return React.Children.only(children);
       }
     }]);
-
-    _inherits(Ref, _React$PureComponent2);
 
     return Ref;
   }(React.PureComponent);
