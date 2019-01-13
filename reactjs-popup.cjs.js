@@ -1,6 +1,6 @@
 /*!
  * reactjs-popup v1.3.0
- * (c) 2018-present Youssouf EL AZIZI <youssoufelazizi@gmail.com>
+ * (c) 2019-present Youssouf EL AZIZI <youssoufelazizi@gmail.com>
  * Released under the MIT License.
  */
 'use strict';
@@ -424,7 +424,7 @@ function (_React$PureComponent) {
 
       var positions = Array.isArray(position) ? position : [position]; // keepTooltipInside would be activated if the  keepTooltipInside exist or the position is Array
 
-      if (keepTooltipInside || Array.isArray(position)) positions = _toConsumableArray(positions).concat(POSITION_TYPES);
+      if (keepTooltipInside || Array.isArray(position)) positions = [].concat(_toConsumableArray(positions), POSITION_TYPES);
       var cords = calculatePosition(trigger, content, positions, arrow, {
         offsetX: offsetX,
         offsetY: offsetY
@@ -489,6 +489,7 @@ function (_React$PureComponent) {
 
           case "focus":
             triggerProps.onFocus = _this.onMouseEnter;
+            triggerProps.onBlur = _this.onMouseLeave;
             break;
         }
       }
