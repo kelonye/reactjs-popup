@@ -226,6 +226,7 @@ export default class Popup extends React.PureComponent {
           break;
         case "focus":
           triggerProps.onFocus = this.onMouseEnter;
+          triggerProps.onBlur = this.onMouseLeave;
           break;
       }
     }
